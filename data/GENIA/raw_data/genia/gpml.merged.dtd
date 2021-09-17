@@ -1,0 +1,140 @@
+<!-- ========================================================================================== -->
+<!-- Genia Project DTD temporary "pos-merged" version 0.51                                                              -->
+<!-- Contact: Yuka Tateisi <yucca@tsujii.is.s.u-tokyo.ac.jp>                                    -->
+<!-- ========================================================================================== -->
+
+
+<!-- ========================================================================================== -->
+<!-- ATTRIBUTE GROUPS                                                                           -->
+<!-- ========================================================================================== -->
+
+<!ENTITY	% common.atts	"
+				"
+>
+
+
+<!-- ========================================================================================== -->
+<!-- ELEMENT GROUPS                                                                             -->
+<!-- ========================================================================================== -->
+
+<!ENTITY	% ling.group	"
+						cons|
+						w
+				"
+>
+ 
+
+<!-- ========================================================================================== -->
+<!-- HIERARCHICAL ELEMENTS                                                                      -->
+<!-- ========================================================================================== -->
+
+<!ELEMENT	set		(
+						import?
+					,	article+
+				)
+>
+
+<!ATTLIST	set
+						%common.atts;
+>
+
+
+<!ELEMENT	article		(
+						articleinfo?
+					,	title
+					,	abstract
+				)
+>
+
+<!ATTLIST	article
+						%common.atts;
+>
+
+<!ELEMENT	articleinfo	(
+						bibliomisc?
+				)
+>
+
+<!ATTLIST	articleinfo
+						%common.atts;
+>
+
+<!ELEMENT	abstract	(
+						#PCDATA
+					|	sentence
+				)*
+>
+
+<!ATTLIST	abstract
+						%common.atts;
+>
+<!ELEMENT	whitespace	(" ")>
+
+<!-- ========================================================================================== -->
+<!-- BLOCK ELEMENTS                                                                             -->
+<!-- ========================================================================================== -->
+
+<!ELEMENT	title		(
+						whitespace
+						|sentence 
+						|	%ling.group;
+				)*
+>
+
+<!ATTLIST	title
+						%common.atts;
+>
+
+<!ELEMENT	sentence	(
+						whitespace
+					|	%ling.group;
+				)*
+>
+
+<!ATTLIST	sentence
+						%common.atts;
+>
+
+<!ELEMENT	bibliomisc	(
+						#PCDATA
+				)
+>
+
+<!ATTLIST	bibliomisc
+						%common.atts;
+>
+
+
+<!-- ========================================================================================== -->
+<!-- LINGUISTIC ELEMENTS                                                                        -->
+<!-- ========================================================================================== -->
+
+<!ELEMENT	cons		(
+						whitespace
+					|	%ling.group;
+				)*
+>
+
+<!ATTLIST	cons
+						syn	NMTOKEN		#IMPLIED
+						sem	CDATA		#IMPLIED
+						%common.atts;
+>
+<!ELEMENT	w		(
+						#PCDATA
+
+				)*
+>
+
+<!ATTLIST	w
+						c	CDATA		#IMPLIED
+						%common.atts;
+>
+
+<!ELEMENT	import		EMPTY>
+
+<!ATTLIST	import
+						resource	CDATA		#IMPLIED
+						prefix	CDATA		#IMPLIED
+						%common.atts;
+>
